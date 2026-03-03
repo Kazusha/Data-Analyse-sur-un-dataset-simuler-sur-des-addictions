@@ -7,7 +7,11 @@ st.set_page_config(
     layout="wide"
 )
 
-model = joblib.load("relapse_model.pkl")
+@st.cache_resource
+def load_model():
+    return joblib.load("relapse_model.pkl")
+
+model = load_model()
 
 calculer = False
 
